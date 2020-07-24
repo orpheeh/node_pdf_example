@@ -15,7 +15,7 @@ function generateAndSendPdf(message, res){
     convertHtmlToPdf(html, (pdf) => {
         res.setHeader("Content-Type", "application/pdf");
         res.send(pdf);
-    })
+    }, { printBackground: true, format: 'A6', landscape: true})
 }
 
 module.exports = {
