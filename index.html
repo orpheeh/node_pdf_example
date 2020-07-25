@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>Télécharger 3 PDFs</button>
+</body>
+<script src="download.js"></script>
+<script>
+    const button = document.querySelector("button");
+    button.addEventListener('click', async () => {
+
+        for (let i = 0; i < 3; i++) {
+            const res = await fetch("http://127.0.0.1:3000/pdfkit/pdf/" + i);
+            if (res.status == 200) {
+                download(await res.blob(), "test" + i + ".pdf");
+            }
+        }
+    })
+</script>
+
+</html>
